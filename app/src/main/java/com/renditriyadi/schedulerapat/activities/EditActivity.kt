@@ -5,9 +5,13 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.renditriyadi.schedulerapat.Rapat
 import com.renditriyadi.schedulerapat.databinding.ActivityEditBinding
 import com.renditriyadi.schedulerapat.room.DatabaseHelper
 import com.renditriyadi.schedulerapat.room.DatabaseRapat
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -17,6 +21,7 @@ class EditActivity : AppCompatActivity() {
     private lateinit var meetingDate: Calendar
     private lateinit var meetingTime: Calendar
     private lateinit var hari: String
+    private var id: Int? = null
     private lateinit var tanggal: String
     private lateinit var waktu: String
     private var dbAdd: DatabaseRapat?=null
@@ -27,6 +32,16 @@ class EditActivity : AppCompatActivity() {
         binding = ActivityEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        fillData()
+
+        binding.ivShowDatePicker.setOnClickListener{
+            showDatePicker()
+        }
+
+        binding.ivShowTimePicker.setOnClickListener{
+            showTimePicker()
+        }
+
         binding.btnEdit.setOnClickListener {
             updateRapat()
         }
@@ -34,13 +49,26 @@ class EditActivity : AppCompatActivity() {
         binding.btnCancel.setOnClickListener {
             backToMainActivity()
         }
+    }
 
-        binding.ivShowDatePicker.setOnClickListener {
-            showDatePicker()
-        }
-        binding.ivShowTimePicker.setOnClickListener {
-            showTimePicker()
-        }
+    private fun fillData() {
+        var itemRapat = intent.getParcelableExtra<Rapat>("rapat")
+        binding.etJudulRapat.setText(itemRapat?.judul.orEmpty())
+        binding.etLokasi.setText(itemRapat?.lokasi.orEmpty())
+        hari = itemRapat?.hari.orEmpty()
+        waktu = itemRapat?.waktu.orEmpty()
+        tanggal = itemRapat?.tanggal.orEmpty()
+        id = itemRapat?.id
+        renderDate()
+        renderTime()
+    }
+
+    private fun renderDate() {
+        binding.tvDatePicked.text = "Meeting Date: $hari, $tanggal"
+    }
+
+    private fun renderTime() {
+        binding.tvTimePicked.text = "Meeting Time: $waktu"
     }
 
     private fun backToMainActivity() {
@@ -49,7 +77,20 @@ class EditActivity : AppCompatActivity() {
     }
 
     private fun updateRapat() {
-        TODO("Not yet implemented")
+        dbAdd= DatabaseRapat.getInstance(this)
+        val objectRapat = Rapat(
+            id,
+            binding.etJudulRapat.text.toString(),
+            hari,
+            tanggal,
+            waktu,
+            binding.etLokasi.text.toString()
+        )
+
+        GlobalScope.async {
+            databaseHelper.updateRapat(objectRapat)
+        }
+        backToMainActivity()
     }
 
     private fun showTimePicker() {
@@ -61,7 +102,7 @@ class EditActivity : AppCompatActivity() {
             val timeFormat = "HH:mm"
             val sdf = SimpleDateFormat(timeFormat, Locale.getDefault())
             waktu = sdf.format(meetingTime.time)
-            binding.tvTimePicked.text = "Meeting Time: $waktu"
+            renderTime()
         }
         TimePickerDialog(this, timeSetListener,
             meetingTime.get(Calendar.HOUR_OF_DAY),
@@ -82,7 +123,7 @@ class EditActivity : AppCompatActivity() {
 
             hari = sdfHari.format(meetingDate.time)
             tanggal = sdfTanggal.format(meetingDate.time)
-            binding.tvDatePicked.text = "Meeting Date: "+sdfHari.format(meetingDate.time)+", "+sdfTanggal.format(meetingDate.time)
+            renderDate()
         }
 
         DatePickerDialog(this, dateSetListener,
@@ -90,4 +131,5 @@ class EditActivity : AppCompatActivity() {
             meetingDate.get(Calendar.MONTH),
             meetingDate.get(Calendar.DAY_OF_MONTH)).show()
     }
+
 }

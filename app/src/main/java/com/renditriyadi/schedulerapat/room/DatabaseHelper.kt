@@ -30,7 +30,7 @@ class DatabaseHelper(private val context: Context) {
     }
 
     suspend fun deleteRapat(rapat: Rapat) = withContext(Dispatchers.IO) {
-        rapatDao.addRapat(rapat)
+        rapatDao.deleteRapat(rapat)
     }
 
 }

@@ -1,7 +1,9 @@
 package com.renditriyadi.schedulerapat
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.Image
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.renditriyadi.schedulerapat.activities.EditActivity
+import com.renditriyadi.schedulerapat.room.DatabaseHelper
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 class RecycleViewAdapter: RecyclerView.Adapter<RecycleViewAdapter.RapatViewHolder>() {
     private val daftarRapat: MutableList<Rapat> = mutableListOf()
@@ -42,12 +47,16 @@ class RecycleViewAdapter: RecyclerView.Adapter<RecycleViewAdapter.RapatViewHolde
                 val intentKeEditActivity = Intent(it.context,
                     EditActivity::class.java)
 
-                intentKeEditActivity.putExtra("rapat",daftarRapat[position])
+                intentKeEditActivity.putExtra("rapat",itemRapat)
                 it.context.startActivity(intentKeEditActivity)
             }
 
             btnDelete.setOnClickListener {
-                // TODO: 28/10/2021  
+                val databaseHelper= DatabaseHelper(this.context)
+                MainScope().launch {
+                    databaseHelper.deleteRapat(itemRapat)
+                    this@RecycleViewAdapter.addDaftarRapat(databaseHelper.getRapat())
+                }
             }
         }
 
