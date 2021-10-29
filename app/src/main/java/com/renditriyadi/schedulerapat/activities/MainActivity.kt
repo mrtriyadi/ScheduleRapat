@@ -15,8 +15,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding : MainActivityBinding
+    private lateinit var binding: MainActivityBinding
     lateinit var sharedpref: PreferencesHelper
 
     private val rapatAdapter: RecycleViewAdapter by lazy {
@@ -26,24 +25,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         sharedpref = PreferencesHelper(this)
-
         binding = MainActivityBinding.inflate(layoutInflater)
-
-        setContentView(binding.root)
-
+        val view = binding.root
+        setContentView(view)
         showFormTambah()
 
         showListRapat()
 
         logOut()
 
-        binding.tvUsername.text = sharedpref.getString(Constant.PREF_USERNAME)
-    }
+        binding.appBar.tvUsername.text = sharedpref.getString(Constant.PREF_USERNAME)
+      }
+
+
 
     private fun logOut() {
-        binding.ivLogout.setOnClickListener {
+        binding.appBar.ivLogout.setOnClickListener {
             sharedpref.clear()
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
@@ -51,8 +49,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showListRapat() {
-        binding.rvListRapat.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
-        binding.rvListRapat.adapter= rapatAdapter
+        binding.mainActivitySheet.rvListRapat.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
+        binding.mainActivitySheet.rvListRapat.adapter= rapatAdapter
         val databaseHelper = DatabaseHelper(this)
 
         MainScope().launch {
@@ -64,11 +62,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showFormTambah() {
-        binding.ivShowForm.setOnClickListener {
+        binding.mainActivitySheet.ivShowForm.setOnClickListener {
             val intent = Intent(this, FormTambah::class.java)
             startActivity(intent)
         }
-        binding.tvShowForm.setOnClickListener {
+        binding.mainActivitySheet.tvShowForm.setOnClickListener {
             val intent = Intent(this, FormTambah::class.java)
             startActivity(intent)
         }
