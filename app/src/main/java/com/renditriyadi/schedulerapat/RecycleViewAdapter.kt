@@ -42,7 +42,7 @@ class RecycleViewAdapter: RecyclerView.Adapter<RecycleViewAdapter.RapatViewHolde
                 val intentKeEditActivity = Intent(it.context,
                     EditActivity::class.java)
 
-                intentKeEditActivity.putExtra("rapat",daftarRapat[position])
+                intentKeEditActivity.putExtra("rapat",itemRapat)
                 it.context.startActivity(intentKeEditActivity)
             }
 
