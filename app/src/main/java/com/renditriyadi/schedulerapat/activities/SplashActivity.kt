@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import com.renditriyadi.schedulerapat.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -14,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        handler = Handler()
+        handler = Handler(Looper.getMainLooper())
         handler.postDelayed(
             {
                 val intent = Intent (this, LoginActivity::class.java)

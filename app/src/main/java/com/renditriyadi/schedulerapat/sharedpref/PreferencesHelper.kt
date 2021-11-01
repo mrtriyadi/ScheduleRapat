@@ -5,14 +5,10 @@ import android.content.SharedPreferences
 
 class PreferencesHelper (context: Context){
 
-    private val PREFS_NAME = "login123"
-    private val sharedpref: SharedPreferences
-    val editor: SharedPreferences.Editor
+    private val prefsName = "login123"
+    private val sharedpref: SharedPreferences = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
+    private val editor: SharedPreferences.Editor = sharedpref.edit()
 
-    init {
-        sharedpref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        editor= sharedpref.edit()
-    }
     fun put(key: String, value: String){
         editor.putString(key, value)
             .apply()

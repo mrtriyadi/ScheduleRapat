@@ -3,9 +3,9 @@ package com.renditriyadi.schedulerapat.sharedpref
 class Constant {
 
     companion object{
-        val PREF_IS_LOGIN = "PREF_IS_LOGIN"
-        val PREF_USERNAME = "PREF_USERNAME"
-        val PREF_PASSWORD = "PREF_PASSWORD"
+        const val PREF_IS_LOGIN = "PREF_IS_LOGIN"
+        const val PREF_USERNAME = "PREF_USERNAME"
+        const val PREF_PASSWORD = "PREF_PASSWORD"
     }
 
 }

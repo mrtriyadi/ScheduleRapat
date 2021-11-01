@@ -10,7 +10,7 @@ import com.renditriyadi.schedulerapat.sharedpref.PreferencesHelper
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding
-    lateinit var sharedpref: PreferencesHelper
+    private lateinit var sharedpref: PreferencesHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)

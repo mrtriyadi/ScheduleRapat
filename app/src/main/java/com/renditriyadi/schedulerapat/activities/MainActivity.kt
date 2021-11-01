@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.renditriyadi.schedulerapat.room.DatabaseHelper
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainActivityBinding
-    lateinit var sharedpref: PreferencesHelper
+    private lateinit var sharedpref: PreferencesHelper
 
     private val rapatAdapter: RecycleViewAdapter by lazy {
         RecycleViewAdapter()
@@ -38,17 +39,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.appBar.tvUsername.text = sharedpref.getString(Constant.PREF_USERNAME)
 
+        setupLoadingDialog()
+
+      }
+
+    private fun setupLoadingDialog(){
         val loading = LoadingDialog(this)
         loading.startLoading()
 
-        val handler = Handler()
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                loading.isDissmiss()
-            }
-            
-        }, 4000)
-      }
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            loading.isDismiss() }, 4000)
+    }
 
 
 

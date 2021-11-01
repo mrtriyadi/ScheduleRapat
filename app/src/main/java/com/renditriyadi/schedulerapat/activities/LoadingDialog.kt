@@ -4,7 +4,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import com.renditriyadi.schedulerapat.R
 
-class LoadingDialog (val mActivity:Activity){
+class LoadingDialog (private val mActivity:Activity){
     private lateinit var isdialog:AlertDialog
     fun startLoading(){
         val inflater = mActivity.layoutInflater
@@ -17,7 +17,7 @@ class LoadingDialog (val mActivity:Activity){
         isdialog.show()
     }
 
-    fun isDissmiss() {
+    fun isDismiss() {
         isdialog.dismiss()
     }
 }
