@@ -3,6 +3,7 @@ package com.renditriyadi.schedulerapat.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.renditriyadi.schedulerapat.room.DatabaseHelper
@@ -36,6 +37,17 @@ class MainActivity : AppCompatActivity() {
         logOut()
 
         binding.appBar.tvUsername.text = sharedpref.getString(Constant.PREF_USERNAME)
+
+        val loading = LoadingDialog(this)
+        loading.startLoading()
+
+        val handler = Handler()
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                loading.isDissmiss()
+            }
+            
+        }, 4000)
       }
 
 
