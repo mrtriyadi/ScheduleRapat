@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/centre_background"
+    android:background="@color/whiteTextColor"
     tools:context=".activities.LoginActivity">
 
 
@@ -70,8 +70,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:backgroundTint="@color/colorPrimary"
             android:text="Login"
+            android:background="@drawable/centre_button"
             android:textAllCaps="false"
             android:textColor="@color/whiteTextColor" />
 
