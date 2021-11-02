@@ -3,115 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/dummyAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:visibility="invisible"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-
-    <!--    <com.google.android.material.appbar.AppBarLayout-->
-    <!--        android:id="@+id/app_bar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="@dimen/form_app_bar_height"-->
-    <!--        android:theme="@style/AppTheme.AppBarOverlay"-->
-    <!--        android:background="@drawable/centre_background"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        app:layout_constraintRight_toRightOf="parent">-->
-
-    <!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
-    <!--            android:id="@+id/toolbar_layout_header"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:fitsSystemWindows="true"-->
-    <!--            app:contentScrim="?attr/colorPrimary"-->
-    <!--            app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
-
-    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:background="@drawable/centre_background">-->
-
-    <!--            <ImageView-->
-    <!--                android:id="@+id/iv_header"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:adjustViewBounds="true"-->
-    <!--                android:cropToPadding="true"-->
-    <!--                android:src="@drawable/img_header"-->
-    <!--                app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--                app:layout_constraintTop_toTopOf="parent"-->
-    <!--                />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/tv_header1"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_marginLeft="50dp"-->
-    <!--                    android:layout_marginTop="16dp"-->
-    <!--                    android:text="MANAGE"-->
-    <!--                    android:textColor="@color/whiteTextColor"-->
-    <!--                    android:textSize="30sp"-->
-    <!--                    app:layout_constraintHorizontal_bias="0.394"-->
-    <!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--                    app:layout_constraintRight_toRightOf="parent"-->
-    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/tv_header2"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:text="Your Meeting"-->
-    <!--                    android:textSize="18sp"-->
-    <!--                    android:textColor="@color/whiteTextColor"-->
-    <!--                    app:layout_constraintTop_toBottomOf="@id/tv_header1"-->
-    <!--                    app:layout_constraintLeft_toLeftOf="@id/tv_header1"-->
-    <!--                    app:layout_constraintRight_toRightOf="@id/tv_header1"-->
-    <!--                    android:textStyle="italic"-->
-    <!--                    />-->
-
-    <!--                <ImageView-->
-    <!--                    android:id="@+id/iv_logout"-->
-    <!--                    android:layout_width="35dp"-->
-    <!--                    android:layout_height="35dp"-->
-    <!--                    android:layout_marginStart="88dp"-->
-    <!--                    android:src="@drawable/ic_logout"-->
-    <!--                    app:layout_constraintBottom_toBottomOf="@+id/tv_header1"-->
-    <!--                    app:layout_constraintStart_toEndOf="@+id/tv_header1"-->
-    <!--                    app:layout_constraintTop_toTopOf="@+id/tv_header1"-->
-    <!--                    app:layout_constraintVertical_bias="1.0" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/tv_welcome"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_marginStart="136dp"-->
-    <!--                    android:layout_marginTop="24dp"-->
-    <!--                    android:text="Welcome, "-->
-    <!--                    android:textStyle="bold"-->
-    <!--                    app:layout_constraintStart_toStartOf="@+id/tv_header2"-->
-    <!--                    app:layout_constraintTop_toBottomOf="@+id/tv_header1" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/tv_username"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:hint="User"-->
-    <!--                    android:textStyle="bold"-->
-    <!--                    app:layout_constraintBottom_toBottomOf="@+id/tv_welcome"-->
-    <!--                    app:layout_constraintStart_toEndOf="@+id/tv_welcome"-->
-    <!--                    app:layout_constraintTop_toTopOf="@+id/tv_welcome" />-->
-    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-    <!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
-
-    <!--    </com.google.android.material.appbar.AppBarLayout>-->
+    android:layout_height="match_parent"
+    android:layout_marginTop="140dp">
 
     <ImageView
         android:id="@+id/iv_show_form"
@@ -120,8 +13,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:src="@drawable/btn_tambah"
-        app:layout_constraintLeft_toLeftOf="@id/dummyAppBar"
-        app:layout_constraintTop_toBottomOf="@id/dummyAppBar"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tv_show_form"
@@ -157,24 +50,15 @@
         app:layout_constraintRight_toRightOf="@id/tv_label1"
         app:layout_constraintTop_toBottomOf="@id/tv_label1" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_schedule_rapat"
-        style="@style/centreLocatorCardDesign"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="10dp"
-        android:scrollbars="vertical"
-        android:verticalScrollbarPosition="right"
-        android:scrollbarSize="10dp"
-        app:layout_constraintTop_toBottomOf="@id/iv_show_form">
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list_rapat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </androidx.cardview.widget.CardView>
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/iv_show_form"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

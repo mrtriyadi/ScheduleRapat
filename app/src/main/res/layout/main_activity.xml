@@ -10,6 +10,7 @@
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar"/>
+
     <include
         android:id="@+id/main_activity_sheet"
         layout="@layout/main_activity_sheet" />
